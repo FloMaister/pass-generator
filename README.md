@@ -1,13 +1,13 @@
-#Password generator
+# PASSWORD GENERATOR
 
-Наше приложение для генерации паролей - это инструмент, который поможет вам создавать безопасные и надежные пароли для защиты ваших учетных записей. Наше приложение предлагает ряд функций, которые помогут вам создать пароли, которые трудно угадать или взломать.
+Our password generator app is a tool that will assist you in creating secure and reliable passwords to protect your accounts. Our app offers several features that will help you create passwords that are difficult to guess or hack.
 
-Наше приложение предоставляет следующие возможности:
+Our app provides the following capabilities:
 
-Генерация паролей: наша функция генерации паролей создает уникальные и сложные пароли, состоящие из букв разных регистров, цифр и специальных символов.
+Password generation: our password generator function creates unique and complex passwords consisting of letters in different cases, numbers, and special characters.
 
-Настройка параметров: вы можете настроить длину пароля, выбрать, должны ли пароли включать цифры или специальные символы, и исключить символы, которые вы не хотите использовать в своем пароле.
+Parameter customization: you can customize the password length, choose whether passwords should include numbers or special characters, and exclude characters you do not want to use in your password.
 
-Удобное хранение: наше приложение сохраняет все сгенерированные пароли в зашифрованном виде и позволяет вам легко копировать пароли в буфер обмена.ы
+Convenient storage: our app saves all generated passwords in encrypted form and allows you to easily copy passwords to the clipboard.
 
-Мы уделяем особое внимание безопасности нашего приложения. Мы используем самые передовые методы шифрования и защиты данных, чтобы гарантировать безопасность всех паролей, созданных с помощью нашего приложения. Мы также рекомендуем всем пользователям нашего приложения следовать хорошим практикам безопасности, таким как использование уникальных паролей для каждой учетной записи и периодическая смена паролей.
+We pay special attention to the security of our app. We use the most advanced encryption and data protection methods to ensure the security of all passwords created using our app. We also recommend that all users of our app follow good security practices, such as using unique passwords for each account and periodically changing passwords.
