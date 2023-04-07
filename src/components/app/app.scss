@@ -20,6 +20,7 @@
     display: flex;
     flex-direction: column;
     &__box {
+        display: relative;
         margin-top: 150px;
         width: 100%;
         height: var(--h40);
@@ -27,6 +28,7 @@
         padding: 0 10px;
     }
     &__form {
+        position: relative;
         margin-top: 100px;
         display: flex;
         flex-direction: column;
@@ -38,8 +40,8 @@
         margin-top: var(--mt-10);
         width: 100px;
         height: var(--h40);
-        font-size: var(--fz-20);
-        padding: 0 10px;
+        font-size: 17px;
+        padding: 0 0 0 10px;
     }
     &__wrapper-range {
         display: flex;
@@ -49,7 +51,7 @@
         width: 250px;
     }
     &__wrapper-numbers {
-        margin-top: 20px;
+        margin-top: 40px;
         display: flex;
         justify-content: space-between;
         width: 135px;
@@ -85,4 +87,9 @@
         }
     }
     }
+
+.copy {
+    position: absolute;
+    top: 200px;
+}
 

@@ -2,7 +2,7 @@ import './incorrectValue.scss';
 
 const IncorrectValue = () => {
     return (
-        <div className="incorrectValue">Укажите значение от 4 до 16</div>
+        <div className="incorrectValue">Enter a value</div>
     )
 }
 

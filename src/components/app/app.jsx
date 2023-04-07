@@ -1,6 +1,8 @@
+import React from 'react';
 import { useState, useEffect } from "react";
 
 import  Message  from '../message/message';
+import IncorrectValue from '../incorrectValue/incorrectValue';
 
 import './app.scss';
 
@@ -9,28 +11,37 @@ const App = () => {
     let [password, setPassword] = useState();
     let [checkNum, setCheckNum] = useState(false);
     let [checkSymb, setCheckSymb] = useState(false);
+    let [clickPass, setClickPass] = useState(false);
+    let [numPass, setNumPass] = useState(true);
 
     let str = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     let result = '';
 
     useEffect(() => {
         generatePassword(number);
-
     },[number]);
 
-
-    //Функции для checkbox
+    //Функция для срабатывания checkbox
     function isCheckedNum() {
         setCheckNum(checkNum = !checkNum);
     }
 
+    //Функция для срабатывания checkbox
     function isCheckedSymb() {
         setCheckSymb(checkSymb = !checkSymb);
     }
 
     // Функция для отслеживания значения в input'е
     function handleChange(event) {
-        setNumber(number = event.target.value)
+        if (event.target.value <= 9999) {
+            setNumber(number = event.target.value)
+        }
+
+        if (number) {
+            setNumPass(numPass = true);
+        } else {
+            setNumPass(numPass = false);
+        }
     }
 
     // Функция для отмены сброса значения при отправке формы
@@ -40,8 +51,12 @@ const App = () => {
 
     // Функция для копирования текста
     function handleCopy(event) {
-        event.target.select();
-        navigator.clipboard.writeText(event.target.value);
+        if (event.target.value) {
+            event.target.select();
+            navigator.clipboard.writeText(event.target.value);
+            setTimeout(() => setClickPass(clickPass = !clickPass), 300);
+            setTimeout(() => setClickPass(clickPass = !clickPass), 3000);
+        }
     }
 
     // Генерация пароля
@@ -72,6 +87,7 @@ const App = () => {
                 defaultValue={password}
                 readOnly
                 onClick={handleCopy}/>
+                {clickPass ? <div className='copy'>Сopy successful!</div> : null}
                 <form className="item__form" onSubmit={handleSubmit}>
                     <label className="item__label" htmlFor="number">
                         Password length
@@ -85,10 +101,10 @@ const App = () => {
                         value={number}
                         defaultValue={number}
                         onChange={handleChange}
-                        pattern="[0-9]{4,16}"
-                        placeholder="Число"
-                        maxLength={6}
-                        min={4}
+                        pattern="[0-9]"
+                        placeholder="Number"
+                        maxLength={4}
+                        min={6}
                         max={16} />
                         <input 
                         className="item__range" 
@@ -98,10 +114,10 @@ const App = () => {
                         value={number}
                         defaultValue={number}
                         onChange={handleChange}
-                        min={4}
+                        min={6}
                         max={16} />
                     </div>
-                    <Message number={number}/>
+                    {numPass ? <Message number={number}/> : <IncorrectValue/>}
                     <div className="item__wrapper-numbers">
                         <label htmlFor="checkbox-number">Numbers</label>
                         <input 
