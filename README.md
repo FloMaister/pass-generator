@@ -4,6 +4,8 @@ Our password generator app is a tool that will assist you in creating secure and
 
 Our app provides the following capabilities:
 
+-   Password generation: our password generator function creates unique and complex passwords consisting of letters in different cases, numbers, and special characters.
+
 -   Parameter customization: you can customize the password length, choose whether passwords should include numbers or special characters.
 
 -   Convenient storage: our app saves all generated passwords in encrypted form and allows you to easily copy passwords to the clipboard.
