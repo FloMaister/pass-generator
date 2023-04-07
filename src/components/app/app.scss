@@ -52,15 +52,21 @@
         margin-top: 20px;
         display: flex;
         justify-content: space-between;
-        width: 100px;
+        width: 135px;
         font-size: var(--fz-18);
+    }
+    &__checkbox-numbers {
+        zoom: 1.5;
     }
     &__wrapper-symbols {
         margin-top: var(--mt-10);
         display: flex;
         justify-content: space-between;
-        width: 100px;
+        width: 135px;
         font-size: var(--fz-18);
+    }
+    &__checkbox-symbols {
+        zoom: 1.5;
     }
     &__submit {
         margin-top: 150px;
