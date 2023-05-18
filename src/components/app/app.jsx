@@ -1,46 +1,40 @@
 import React from 'react';
 import { useState, useEffect } from "react";
 
-import  Message  from '../message/message';
 import IncorrectValue from '../incorrectValue/incorrectValue';
+import SelectValue from '../selectValue/selectValue';
 
 import './app.scss';
 
 const App = () => {
-    let [number, setNumber] = useState(8);
-    let [password, setPassword] = useState();
-    let [checkNum, setCheckNum] = useState(false);
-    let [checkSymb, setCheckSymb] = useState(false);
-    let [clickPass, setClickPass] = useState(false);
-    let [numPass, setNumPass] = useState(true);
+    const randomNumber = Math.floor(Math.random() * 11) + 6;
+    const [number, setNumber] = useState(randomNumber);
+    const [password, setPassword] = useState();
+    const [checkNum, setCheckNum] = useState(false);
+    const [checkSymb, setCheckSymb] = useState(false);
+    const [clickPass, setClickPass] = useState(false);
 
     let str = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     let result = '';
 
     useEffect(() => {
         generatePassword(number);
-    },[number]);
+    },[number, checkNum, checkSymb]);
 
     //Функция для срабатывания checkbox
     function isCheckedNum() {
-        setCheckNum(checkNum = !checkNum);
+        setCheckNum(checkNum => checkNum = !checkNum);
     }
 
     //Функция для срабатывания checkbox
     function isCheckedSymb() {
-        setCheckSymb(checkSymb = !checkSymb);
+        setCheckSymb(checkSymb => checkSymb = !checkSymb);
     }
 
     // Функция для отслеживания значения в input'е
     function handleChange(event) {
         if (event.target.value <= 9999) {
-            setNumber(number = event.target.value)
-        }
-
-        if (number) {
-            setNumPass(numPass = true);
-        } else {
-            setNumPass(numPass = false);
+            setNumber(number => number = event.target.value)
         }
     }
 
@@ -54,13 +48,13 @@ const App = () => {
         if (event.target.value) {
             event.target.select();
             navigator.clipboard.writeText(event.target.value);
-            setTimeout(() => setClickPass(clickPass = !clickPass), 300);
-            setTimeout(() => setClickPass(clickPass = !clickPass), 3000);
+            setTimeout(() => setClickPass(clickPass => clickPass = !clickPass), 300);
+            setTimeout(() => setClickPass(clickPass => clickPass = !clickPass), 3000);
         }
     }
 
     // Генерация пароля
-    function generatePassword(numb) {
+    const generatePassword = (numb) => {
         if(checkNum) {
             str += '0123456789';
         }
@@ -73,7 +67,7 @@ const App = () => {
             result += str.charAt(Math.floor(Math.random() * str.length));
         }
 
-        setPassword(password = result);
+        setPassword(password => password = result);
     }
 
     return (
@@ -99,25 +93,25 @@ const App = () => {
                         name="number" 
                         id="number"
                         value={number}
-                        defaultValue={number}
                         onChange={handleChange}
                         pattern="[0-9]"
                         placeholder="Number"
                         maxLength={4}
                         min={6}
-                        max={16} />
+                        max={16}
+                        inputMode='numeric' />
                         <input 
                         className="item__range" 
                         type="range" 
                         name="range" 
                         id="range"
                         value={number}
-                        defaultValue={number}
                         onChange={handleChange}
                         min={6}
                         max={16} />
                     </div>
-                    {numPass ? <Message number={number}/> : <IncorrectValue/>}
+                    {number === '' ? <IncorrectValue/> : null}
+                    {(number < 6 && number > 0) || number > 16 ? <SelectValue/> : null}
                     <div className="item__wrapper-numbers">
                         <label htmlFor="checkbox-number">Numbers</label>
                         <input 
